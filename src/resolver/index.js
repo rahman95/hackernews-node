@@ -1,18 +1,8 @@
 // resolver has structure of the type definition
-let links = [
-  {
-    id: "link-0",
-    url: "www.howtographql.com",
-    description: "Fullstack tutorial for GraphQL"
-  }
-];
-
-let idCount = links.length;
-
 const resolvers = {
   Query: {
     info: () => `This is the API of a Hackernews Clone`,
-    feed: () => links
+    feed: (root, args, context) => context.prisma.links()
   },
 
   Link: {
@@ -22,16 +12,11 @@ const resolvers = {
   },
 
   Mutation: {
-    createLink: (parent, args) => {
-      const link = {
-        id: `link-${idCount++}`,
-        description: args.description,
-        url: args.url
-      };
-
-      links.push(link);
-
-      return link;
+    createLink: (parent, args, context) => {
+      return context.prisma.createLink({
+        url: args.url,
+        description: args.description
+      });
     },
 
     updateLink: (parent, args) => {
