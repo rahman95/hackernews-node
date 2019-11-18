@@ -496,6 +496,7 @@ export interface LinkUpdateWithWhereUniqueWithoutAuthorInput {
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  email?: Maybe<String>;
 }>;
 
 export interface NodeNode {
