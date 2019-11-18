@@ -14,9 +14,14 @@ function author(parent, args, context) {
   return context.prisma.link({ id: parent.id }).author();
 }
 
+function votes(parent, args, context) {
+  return context.prisma.link({ id: parent.id }).votes();
+}
+
 module.exports = {
   id,
   description,
   url,
-  author
+  author,
+  votes
 };

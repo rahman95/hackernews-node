@@ -3,6 +3,7 @@ const Mutation = require("./Mutation");
 const Subscription = require("./Subscription");
 const Link = require("./Link");
 const User = require("./User");
+const Vote = require("./Vote");
 
 // resolver has structure of the type definition
 const resolvers = {
@@ -10,7 +11,8 @@ const resolvers = {
   Mutation,
   Subscription,
   Link,
-  User
+  User,
+  Vote
 };
 
 module.exports = resolvers;
