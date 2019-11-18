@@ -6,14 +6,16 @@ async function feed(parent, args, context, info) {
   const whereFilter = getFilter(args.filter);
 
   const links = await context.prisma.links({
-    where: whereFilter
+    where: whereFilter,
+    skip: args.offset,
+    first: args.limit
   });
 
   return links;
 }
 
 function getFilter(filter) {
-  if (filter.length === 0) {
+  if (typeof filter === "undefined" || filter.length === 0) {
     return {};
   }
 

@@ -1,7 +1,7 @@
 # Type definitions defines all root types
 type Query {
     info: String!
-    feed(filter: String): [Link!]!
+    feed(filter: String, offset: Int, limit: Int): [Link!]!
 }
 
 type Mutation {
