@@ -8,10 +8,21 @@ async function feed(parent, args, context, info) {
   const links = await context.prisma.links({
     where: whereFilter,
     skip: args.offset,
-    first: args.limit
+    first: args.limit,
+    orderBy: args.orderBy
   });
 
-  return links;
+  const count = await context.prisma
+    .linksConnection({
+      where: whereFilter
+    })
+    .aggregate()
+    .count();
+
+  return {
+    links,
+    count
+  };
 }
 
 function getFilter(filter) {
