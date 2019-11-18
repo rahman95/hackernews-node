@@ -1,5 +1,6 @@
 const Query = require("./Query");
 const Mutation = require("./Mutation");
+const Subscription = require("./Subscription");
 const Link = require("./Link");
 const User = require("./User");
 
@@ -7,6 +8,7 @@ const User = require("./User");
 const resolvers = {
   Query,
   Mutation,
+  Subscription,
   Link,
   User
 };
